@@ -5,14 +5,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -484,6 +483,13 @@ public class BrowserUtils {
         new WebDriverWait(Driver.getDriver(), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT"))).
                 until(ExpectedConditions.stalenessOf(Driver.getDriver().findElement(by)));
     }
+    public static void fluentWait(int timeOutSecond, int pollingSecond) {
+        Wait<WebDriver> fluentWait=new FluentWait<WebDriver>(Driver.getDriver())
+                .withTimeout(Duration.ofSeconds(timeOutSecond))
+                .pollingEvery(Duration.ofSeconds(pollingSecond))
+                .ignoring(NoSuchElementException.class);
+    }
+
 
 
 }
