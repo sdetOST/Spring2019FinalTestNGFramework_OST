@@ -19,7 +19,7 @@ public class LoginTests extends TestBase {
         String username = ConfigurationReader.getProperty("storemanagerusername");
         String password = ConfigurationReader.getProperty("storemanagerpassword");
 
-        LoginPage loginPage =  pages.loginPage();
+ //       LoginPage loginPage =  pages.loginPage();
 
         pages.loginPage().clickRememberMe();
         pages.loginPage().login(username, password);

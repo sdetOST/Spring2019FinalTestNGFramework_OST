@@ -8,8 +8,6 @@ import org.testng.SkipException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
-
 public class DDTLoginTests extends TestBase {
 
     @Test(dataProvider = "credentials_info")
